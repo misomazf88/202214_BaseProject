@@ -47,4 +47,24 @@ export class CiudadService {
       throw new BusinessLogicException("El pais ingresado no corresponde a uno valido.", BusinessError.PRECONDITION_FAILED);
     return await this.ciudadRepository.save(ciudad);
   }
+
+  /**
+  * Actualiza una ciudad a partir de id y de json recibido en body con representacion de la ciudad a almacenar en db, se valida que la ciudad este
+  * en alguno de los paises (Argentina, Ecuador, Paraguay) de lo contrario se lanza excepcion de negoico.
+  * @param id
+  * @param ciudad
+  * @returns CiudadEntity
+  */
+  async update(id: string, ciudad: CiudadEntity): Promise<CiudadEntity> {
+    const persisteCiudad: CiudadEntity = await this.ciudadRepository.findOne({ where: { id } });
+    if (!persisteCiudad)
+      throw new BusinessLogicException("No se encontró la ciudad con la identificación proporcionada.", BusinessError.NOT_FOUND);
+
+    if (ciudad.pais != Pais.Argentina && ciudad.pais != Pais.Ecuador && ciudad.pais != Pais.Paraguay)
+      throw new BusinessLogicException("El pais ingresado no corresponde a uno valido.", BusinessError.PRECONDITION_FAILED);
+    //Se asigna id de db a objeto recibido en peticion.
+    ciudad.id = id;
+    //Se almacena objeto en db.
+    return await this.ciudadRepository.save(ciudad);
+  }
 }
