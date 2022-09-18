@@ -68,6 +68,10 @@ export class SupermercadoService {
     return await this.supermercadoRepository.save(supermercado);
   }
 
+  /**
+  * Elimina una supermercado a partir de id, se valida que el supermercado exista en db de lo contrario se lanza excepcion de negoico.
+  * @param id
+  */
   async delete(id: string) {
     //Se busca supermercado por id recibido en peticion.
     const supermercado: SupermercadoEntity = await this.supermercadoRepository.findOne({ where: { id } });

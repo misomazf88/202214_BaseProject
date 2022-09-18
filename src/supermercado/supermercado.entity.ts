@@ -18,7 +18,7 @@ export class SupermercadoEntity {
   latitud: number;
 
   @Column()
-  paginaWeb: number;
+  paginaWeb: string;
 
   @OneToMany(() => CiudadEntity, sede => sede.nombre)
   sedes: CiudadEntity[];
