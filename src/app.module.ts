@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CiudadModule } from './ciudad/ciudad.module';
-import { SupermercadoModule } from './supermercado/supermercado.module';
-import { CiudadSupermercadoModule } from './ciudad-supermercado/ciudad-supermercado.module';
-import { CiudadEntity } from './ciudad/ciudad.entity';
-import { SupermercadoEntity } from './supermercado/supermercado.entity';
+import { CityModule } from './city/city.module';
+import { SupermarketModule } from './supermarket/supermarket.module';
+import { CitySupermarketModule } from './city-supermarket/city-supermarket.module';
+import { CityEntity } from './city/city.entity';
+import { SupermarketEntity } from './supermarket/supermarket.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [CiudadModule, SupermercadoModule, CiudadSupermercadoModule,
+  imports: [CityModule, SupermarketModule, CitySupermarketModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -17,7 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'postgres',
       database: 'parcial',
-      entities: [CiudadEntity, SupermercadoEntity],
+      entities: [CityEntity, SupermarketEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true

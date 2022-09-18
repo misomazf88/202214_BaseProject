@@ -1,16 +1,16 @@
 import { IsNotEmpty, IsString , IsNumber} from 'class-validator';
 
-export class CiudadDto {
+export class CityDto {
 
   @IsString()
   @IsNotEmpty()
-  readonly nombre: string;
+  readonly name: string;
 
   @IsString()
   @IsNotEmpty()
-  readonly pais: string;
+  readonly country: string;
 
   @IsNotEmpty()
   @IsNumber()
-  readonly numeroHabitantes: number;
+  readonly numberInhabitants: number;
 }

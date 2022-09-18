@@ -1,20 +1,20 @@
 import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
 
-export class SupermercadoDto {
+export class SupermarketDto {
 
   @IsNotEmpty()
   @IsString()
-  readonly nombre: string;
+  readonly name: string;
 
   @IsNotEmpty()
   @IsNumber()
-  readonly longitud: number;
+  readonly longitude: number;
 
   @IsNotEmpty()
   @IsNumber()
-  readonly latitud: number;
+  readonly latitude: number;
 
   @IsNotEmpty()
   @IsString()
-  readonly paginaWeb: string;
+  readonly webPage: string;
 }
