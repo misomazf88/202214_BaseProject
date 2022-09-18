@@ -90,7 +90,6 @@ export class CiudadSupermercadoService {
   * Elimina el supermercado que tiene una ciudad.
   * @param ciudadId
   * @param supermercadoId
-  * @returns CiudadEntity
   */
   async deleteSupermarketFromCity(ciudadId: string, supermercadoId: string) {
     const supermercado: SupermercadoEntity = await this.supermercadoRepository.findOne({ where: { id: supermercadoId } });
