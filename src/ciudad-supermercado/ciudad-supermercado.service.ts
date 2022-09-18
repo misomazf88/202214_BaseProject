@@ -86,6 +86,12 @@ export class CiudadSupermercadoService {
     return await this.ciudadRepository.save(ciudad);
   }
 
+  /**
+  * Elimina el supermercado que tiene una ciudad.
+  * @param ciudadId
+  * @param supermercadoId
+  * @returns CiudadEntity
+  */
   async deleteSupermarketFromCity(ciudadId: string, supermercadoId: string) {
     const supermercado: SupermercadoEntity = await this.supermercadoRepository.findOne({ where: { id: supermercadoId } });
     if (!supermercado)
@@ -99,6 +105,6 @@ export class CiudadSupermercadoService {
       throw new BusinessLogicException("El supermercado con el id proporcionado no está asociada a la ciudad.", BusinessError.PRECONDITION_FAILED)
 
     ciudad.supermercados = ciudad.supermercados.filter(e => e.id !== supermercadoId);
-    await this.ciudadRepository.delete(ciudad);
+    await this.ciudadRepository.save(ciudad);
   }
 }
