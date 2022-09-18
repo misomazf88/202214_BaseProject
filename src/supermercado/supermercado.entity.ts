@@ -1,5 +1,5 @@
 
-import { CiudadEntity } from "src/ciudad/ciudad.entity";
+import { CiudadEntity } from "../ciudad/ciudad.entity";
 import { Entity, OneToMany, ManyToOne, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
