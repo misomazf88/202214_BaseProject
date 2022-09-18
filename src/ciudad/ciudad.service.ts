@@ -56,6 +56,7 @@ export class CiudadService {
   * @returns CiudadEntity
   */
   async update(id: string, ciudad: CiudadEntity): Promise<CiudadEntity> {
+    //Se busca ciudad por id recibido en peticion.
     const persisteCiudad: CiudadEntity = await this.ciudadRepository.findOne({ where: { id } });
     if (!persisteCiudad)
       throw new BusinessLogicException("No se encontró la ciudad con la identificación proporcionada.", BusinessError.NOT_FOUND);
@@ -66,5 +67,14 @@ export class CiudadService {
     ciudad.id = id;
     //Se almacena objeto en db.
     return await this.ciudadRepository.save(ciudad);
+  }
+
+  async delete(id: string) {
+    //Se busca ciudad por id recibido en peticion.
+    const ciudad: CiudadEntity = await this.ciudadRepository.findOne({ where: { id } });
+    //Si no existe la ciudad se lanza excepcion de negocio.
+    if (!ciudad)
+      throw new BusinessLogicException("No se encontró la ciudad con la identificación proporcionada.", BusinessError.NOT_FOUND);
+    await this.ciudadRepository.remove(ciudad);
   }
 }
