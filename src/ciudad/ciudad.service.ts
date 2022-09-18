@@ -69,6 +69,10 @@ export class CiudadService {
     return await this.ciudadRepository.save(ciudad);
   }
 
+  /**
+  * Elimina una ciudad a partir de id se valida que la ciudad exista en db de lo contrario se lanza excepcion de negoico.
+  * @param id
+  */
   async delete(id: string) {
     //Se busca ciudad por id recibido en peticion.
     const ciudad: CiudadEntity = await this.ciudadRepository.findOne({ where: { id } });
