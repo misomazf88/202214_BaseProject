@@ -1,7 +1,7 @@
-import { CityEntity } from 'src/city/city.entity';
+import { CityEntity } from '../city/city.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SupermarketEntity } from 'src/supermarket/supermarket.entity';
+import { SupermarketEntity } from '../supermarket/supermarket.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
