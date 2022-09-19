@@ -50,15 +50,15 @@ export class CitySupermarketService {
 
   /**
   * Obtiene un supermercado de una ciudad.
-  * @param ciudadId
-  * @param supermercadoId
+  * @param cityId
+  * @param supermarketId
   * @returns SupermarketEntity
   */
-  async findSupermarketFromCity(ciudadId: string, supermercadoId: string): Promise<SupermarketEntity> {
-    const supermercado: SupermarketEntity = await this.supermarketRepository.findOne({ where: { id: supermercadoId } });
+  async findSupermarketFromCity(cityId: string, supermarketId: string): Promise<SupermarketEntity> {
+    const supermercado: SupermarketEntity = await this.supermarketRepository.findOne({ where: { id: supermarketId } });
     if (!supermercado)
       throw new BusinessLogicException("The supermarket with the provided ID was not found.", BusinessError.NOT_FOUND)
-    const ciudad: CityEntity = await this.cityRepository.findOne({ where: { id: ciudadId }, relations: ["supermarkets"] });
+    const ciudad: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!ciudad)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND)
     const supermarketCity: SupermarketEntity = ciudad.supermmarkets.find(e => e.id === supermercado.id);

@@ -15,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: 'millonarios10',
       database: 'parcial',
       entities: [CityEntity, SupermarketEntity],
       dropSchema: true,
