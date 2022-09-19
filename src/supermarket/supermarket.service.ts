@@ -20,7 +20,7 @@ export class SupermermarketService {
   * @returns SupermarketEntity[]
   */
   async findAll(): Promise<SupermarketEntity[]> {
-    return await this.supermarketRepository.find({ relations: ["city"] });
+    return await this.supermarketRepository.find({ relations: ["cities"] });
   }
 
   /**
@@ -29,7 +29,7 @@ export class SupermermarketService {
   * @returns SupermarketEntity
   */
   async findOne(supermarketId: string): Promise<SupermarketEntity> {
-    const supermarket: SupermarketEntity = await this.supermarketRepository.findOne({ where: { id: supermarketId }, relations: ["city"] });
+    const supermarket: SupermarketEntity = await this.supermarketRepository.findOne({ where: { id: supermarketId }, relations: ["cities"] });
     if (!supermarket)
       throw new BusinessLogicException("The supermarket with the provided ID was not found.", BusinessError.NOT_FOUND);
     return supermarket;

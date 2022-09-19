@@ -32,7 +32,7 @@ export class CitySupermarketService {
     const cityToPersist: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] })
     if (!cityToPersist)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND);
-    cityToPersist.supermmarkets = [...cityToPersist.supermmarkets, supermarket];
+    cityToPersist.supermarkets = [...cityToPersist.supermarkets, supermarket];
     return await this.cityRepository.save(cityToPersist);
   }
 
@@ -45,7 +45,7 @@ export class CitySupermarketService {
     const cityEntity: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!cityEntity)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND)
-    return cityEntity.supermmarkets;
+    return cityEntity.supermarkets;
   }
 
   /**
@@ -61,7 +61,7 @@ export class CitySupermarketService {
     const ciudad: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!ciudad)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND)
-    const supermarketCity: SupermarketEntity = ciudad.supermmarkets.find(e => e.id === supermercado.id);
+    const supermarketCity: SupermarketEntity = ciudad.supermarkets.find(e => e.id === supermercado.id);
     if (!supermarketCity)
       throw new BusinessLogicException("The supermarket with the provided id is not associated with the city.", BusinessError.PRECONDITION_FAILED)
     return supermarketCity;
@@ -74,7 +74,7 @@ export class CitySupermarketService {
   * @returns CityEntity
   */
   async updateSupermarketsFromCity(cityId: string, supermarkets: SupermarketEntity[]): Promise<CityEntity> {
-    const cityEntity: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermercados"] });
+    const cityEntity: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!cityEntity)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND)
     for (let i = 0; i < supermarkets.length; i++) {
@@ -82,7 +82,7 @@ export class CitySupermarketService {
       if (!supermarketEntity)
         throw new BusinessLogicException("The supermarket with the provided ID was not found.", BusinessError.NOT_FOUND)
     }
-    cityEntity.supermmarkets = supermarkets;
+    cityEntity.supermarkets = supermarkets;
     return await this.cityRepository.save(cityEntity);
   }
 
@@ -98,12 +98,12 @@ export class CitySupermarketService {
     const cityEntity: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!cityEntity)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND)
-    const citySupermarket: SupermarketEntity = cityEntity.supermmarkets.find(e => e.id === supermarketEntity.id);
+    const citySupermarket: SupermarketEntity = cityEntity.supermarkets.find(e => e.id === supermarketEntity.id);
 
     if (!citySupermarket)
       throw new BusinessLogicException("The supermarket with the provided id is not associated with the city.", BusinessError.PRECONDITION_FAILED)
 
-    cityEntity.supermmarkets = cityEntity.supermmarkets.filter(e => e.id !== supermarketId);
+    cityEntity.supermarkets = cityEntity.supermarkets.filter(e => e.id !== supermarketId);
     await this.cityRepository.save(cityEntity);
   }
 }

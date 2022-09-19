@@ -64,7 +64,7 @@ describe('CityService', () => {
       name: faker.company.name(),
       country: "Argentina",
       numberInhabitants: faker.datatype.number(),
-      supermmarkets: [],
+      supermarkets: [],
     }
 
     const newCity: CityEntity = await service.create(city);

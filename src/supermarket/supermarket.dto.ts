@@ -20,8 +20,5 @@ export class SupermarketDto {
   readonly webPage: string;
 
   @IsNotEmpty()
-  headquarters: CityDto[];
-
-  @IsNotEmpty()
-  city: CityDto;
+  city: CityDto[];
 }

@@ -82,8 +82,7 @@ describe('SupermarketService', () => {
       longitude: faker.datatype.number(),
       latitude: faker.datatype.number(),
       webPage: faker.image.imageUrl(),
-      headquarters: [],
-      city: cityList[0]
+      cities: cityList
     }
 
     const newSupermarket: SupermarketEntity = await service.create(supermarket);

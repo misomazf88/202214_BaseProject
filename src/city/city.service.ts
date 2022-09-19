@@ -21,7 +21,7 @@ export class CityService {
   * @returns CityEntity[]
   */
   async findAll(): Promise<CityEntity[]> {
-    return await this.cityRepository.find({ relations: ["supermmarkets"] });
+    return await this.cityRepository.find({ relations: ["supermarkets"] });
   }
 
   /**
@@ -30,7 +30,7 @@ export class CityService {
   * @returns CityEntity
   */
   async findOne(cityId: string): Promise<CityEntity> {
-    const city: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermmarkets"] });
+    const city: CityEntity = await this.cityRepository.findOne({ where: { id: cityId }, relations: ["supermarkets"] });
     if (!city)
       throw new BusinessLogicException("The city with the provided ID was not found.", BusinessError.NOT_FOUND);
     return city;
