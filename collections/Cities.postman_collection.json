@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Agregar una ciudad",
+			"name": "Crear una ciudad válida",
 			"event": [
 				{
 					"listen": "test",
@@ -96,7 +96,7 @@
 			]
 		},
 		{
-			"name": "Agregar una ciudad 2",
+			"name": "Crear una ciudad inválida",
 			"event": [
 				{
 					"listen": "test",
@@ -105,8 +105,8 @@
 							"var data = pm.response.json()\r",
 							"pm.globals.set(\"id_ciudad\", data.id);\r",
 							"\r",
-							"pm.test(\"El código de estado es 201\", function () {\r",
-							"   pm.response.to.have.status(201);\r",
+							"pm.test(\"El código de estado es 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -123,7 +123,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Cordoba\",\r\n    \"country\": \"Argentina\",\r\n    \"numberInhabitants\": 8500000\r\n}",
+					"raw": "{\r\n    \"name\": \"Cordoba\",\r\n    \"country\": \"Argentin\",\r\n    \"numberInhabitants\": 8500000\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -248,7 +248,7 @@
 			]
 		},
 		{
-			"name": "Obtener una ciudad",
+			"name": "Obtener una ciudad por ID",
 			"event": [
 				{
 					"listen": "test",
@@ -314,7 +314,7 @@
 			]
 		},
 		{
-			"name": "Obtener una ciudad que no existe",
+			"name": "Obtener una ciudad por un ID que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -470,7 +470,7 @@
 			]
 		},
 		{
-			"name": "Actualizar una ciudad que no existe",
+			"name": "Actualizar una ciudad con un ID que no existe",
 			"event": [
 				{
 					"listen": "test",
@@ -561,7 +561,7 @@
 			]
 		},
 		{
-			"name": "Eliminar una ciudad",
+			"name": "Eliminar una ciudad por su ID",
 			"event": [
 				{
 					"listen": "test",
@@ -629,7 +629,7 @@
 			]
 		},
 		{
-			"name": "Eliminar una ciudad que no existe",
+			"name": "Eliminar una ciudad con un ID que no existe",
 			"event": [
 				{
 					"listen": "test",
