@@ -18,7 +18,4 @@ export class SupermarketDto {
   @IsNotEmpty()
   @IsString()
   readonly webPage: string;
-
-  @IsNotEmpty()
-  city: CityDto[];
 }
