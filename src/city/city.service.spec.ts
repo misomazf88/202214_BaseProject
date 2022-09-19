@@ -29,9 +29,9 @@ describe('CityService', () => {
     for (let i = 0; i < 5; i++) {
       city = await repository.save({
         name: faker.company.name(),
-        country: faker.company.name(),
+        country: "Argentina",
         numberInhabitants: faker.datatype.number(),
-        supermarketList: []
+        supermarkets: []
       })
       cityList.push(city);
     }
@@ -101,7 +101,7 @@ describe('CityService', () => {
     expect(deletedCity).toBeNull();
   });
 
-  it('delete debería lanzar una excepción para un ciudad inválida', async () => {
+  it('delete debería lanzar una excepción para una ciudad inválida', async () => {
     const city: CityEntity = cityList[0];
     await service.delete(city.id);
     await expect(() => service.delete("0")).rejects.toHaveProperty("message", "The city with the provided ID was not found.")
