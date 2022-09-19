@@ -5,7 +5,7 @@ import { plainToInstance } from 'class-transformer';
 import { SupermarketDto } from '../supermarket/supermarket.dto';
 import { SupermarketEntity } from '../supermarket/supermarket.entity';
 
-@Controller('city-supermarket')
+@Controller('cities')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CitySupermarketController {
 
@@ -41,7 +41,7 @@ export class CitySupermarketController {
   * @param supermarketId
   * @returns SupermarketEntity
   */
-  @Get('cities/:cityId/supermarkets/:supermarketId')
+  @Get(':cityId/supermarkets/:supermarketId')
   async findSupermarketFromCity(@Param('cityId') cityId: string, @Param('supermarketId') supermarketId: string) {
     return await this.citySupermarketService.findSupermarketFromCity(cityId, supermarketId);
   }
