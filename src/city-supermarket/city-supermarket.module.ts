@@ -1,7 +1,7 @@
-import { CityEntity } from 'src/city/city.entity';
+import { CityEntity } from '../city/city.entity';
 import { CitySupermarketService } from './city-supermarket.service';
 import { Module } from '@nestjs/common';
-import { SupermarketEntity } from 'src/supermarket/supermarket.entity';
+import { SupermarketEntity } from '../supermarket/supermarket.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CitySupermarketController } from './city-supermarket.controller';
 
