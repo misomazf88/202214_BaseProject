@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
-import { CityDto } from '../city/city.dto';
 
 export class SupermarketDto {
 
