@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsString, IsNumber } from 'class-validator';
+import { CityDto } from 'src/city/city.dto';
 
 export class SupermarketDto {
 
@@ -17,4 +18,10 @@ export class SupermarketDto {
   @IsNotEmpty()
   @IsString()
   readonly webPage: string;
+
+  @IsNotEmpty()
+  headquarters: CityDto[];
+
+  @IsNotEmpty()
+  city: CityDto;
 }
